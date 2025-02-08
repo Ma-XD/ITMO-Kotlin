@@ -1,7 +1,6 @@
 # Задание 1.2. Синтаксис Kotlin. Классы, коллекции, функции
 
 ## Выполнение
-Для выполнения этого задания вам потребуется Intellij Idea, достаточно Community Edition. 
 
 Установите плагин [JetBrains Academy](https://plugins.jetbrains.com/plugin/10081-jetbrains-academy) в вашу Idea.
 
