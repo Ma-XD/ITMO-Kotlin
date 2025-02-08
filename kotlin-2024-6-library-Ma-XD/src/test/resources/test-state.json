@@ -1,0 +1,21 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "kbats",
+      "name": "kbats"
+    }
+  ],
+  "borrowedBooks": [
+    {
+      "bookId": "1",
+      "userId": "1",
+      "returnDeadline": "2024-12-18T23:32:18.792716700Z"
+    },
+    {
+      "bookId": "2",
+      "userId": "1",
+      "returnDeadline": "2024-12-17T23:32:18.793708500Z"
+    }
+  ]
+}

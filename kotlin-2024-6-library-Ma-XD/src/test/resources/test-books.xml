@@ -1,0 +1,8 @@
+<BookCatalog>
+    <Book id="1" title="1984" author="George Orwell" year="1949">
+        <Description description="Novel about a man’s struggle against a totalitarian regime that controls truth and suppresses individual freedom." genres="dystopian,political fiction,science fiction"/>
+    </Book>
+    <Book id="2" title="Harry Potter and the Philosopher's Stone" author="J. K. Rowling" year="1997">
+        <Description description="a young boy, Harry Potter, who discovers he's a wizard and embarks on an adventure at Hogwarts School of Witchcraft and Wizardry, where he uncovers secrets about his past and faces dark forces" genres="fantasy"/>
+    </Book>
+</BookCatalog>
