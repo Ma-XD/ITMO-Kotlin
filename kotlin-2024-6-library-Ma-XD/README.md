@@ -4,9 +4,9 @@
 
 Вы разрабатываете приложение для управления библиотекой в университете.
 
-В распоряжении библиотеки есть книги (`Book`), каждая книга имеет уникальный идентификатор, название, автора, год выпуска, описание: текстовое и список жанров.
+В распоряжении библиотеки есть книги ([`Book`](src/main/kotlin/library/api/Book.kt)), каждая книга имеет уникальный идентификатор, название, автора, год выпуска, описание: текстовое и список жанров.
 
-У библиотеки есть посетители (`Users`), каждый посетитель имеет уникальный идентификатор, адрес электронной почты и имя.
+У библиотеки есть посетители ([`Users`](src/main/kotlin/library/api/User.kt)), каждый посетитель имеет уникальный идентификатор, адрес электронной почты и имя.
 Посетители могут брать на время (не больше чем на 7 дней) одну или несколько книг для домашнего чтения.
 
 
@@ -40,7 +40,7 @@
 }
 ```
  
-Реализуйте  методы в объекте `LibrarySerializer`.
+Реализуйте  методы в объекте [`LibrarySerializer`](src/main/kotlin/library/data/LibrarySerializer.kt).
 Для сериализация воспользуйтесь библиотекой [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization) и [pdvrieze/xmlutil](https://github.com/pdvrieze/xmlutil).
 Для настройки сериализации вам разрешается расставить необходимые аннотации `kotlinx.serialization` в уже существующих классах в пакете `api`.
 
@@ -50,10 +50,10 @@
 * Преобразовывать каталог книг (`BookCatalog`) в формат xml и обратно;
 * Преобразовывать информацию о посетителях и выданных книг (`LibraryState`) в формат json и обратно.
 
-Решение можно протестировать с помощью тестов в классе `LibrarySerializerTest` или через команду `gradlew test --tests "library.LibrarySerializerTest"`.
+Решение можно протестировать с помощью тестов в классе [`LibrarySerializerTest`](src/test/kotlin/library/LibrarySerializerTest.kt) или через команду `gradlew test --tests "library.LibrarySerializerTest"`.
 
 ## Часть 2. Library Storage
-Создайте класс `FileLibraryStorage`, который реализует некоторую "базу данных" библиотеки, сохраняя все данные после каждого изменения в текстовые файлы `books.xml` и `state.json`.
+Создайте класс [`FileLibraryStorage`](src/main/kotlin/library/data/FileLibraryStorage.kt), который реализует некоторую "базу данных" библиотеки, сохраняя все данные после каждого изменения в текстовые файлы `books.xml` и `state.json`.
 
 В интерфейсе должны быть реализованы следующие методы:
 * `allBooks(): List<Book>` - список всех книг, хранящихся в библиотеке;
@@ -64,7 +64,7 @@
 * `borrowBook(bookId: String, userId: String): Instant` - выдать посетителю с идентификатором `userId` кингу с идентификатором `bookId` на __7__ дней (этот метод должен возвращать дату, до которой посетитель должен вернуть книгу);
 * `returnBook(bookId: String, userId: String)` - забрать у посетителя с идентификатором `userId` кингу с идентификатором `bookId`.
 
-Решение можно протестировать с помощью тестов в классе `FileLibraryStorageTest` или с помощью команды `gradlew test --tests "library.FileLibraryStorageTest"`.
+Решение можно протестировать с помощью тестов в классе [`FileLibraryStorageTest`](src/test/kotlin/library/FileLibraryStorageTest.kt) или с помощью команды `gradlew test --tests "library.FileLibraryStorageTest"`.
 
 ## Часть 3. Library Application
 Теперь реализуйте многопоточное приложение для управления библиотекой.
@@ -75,7 +75,7 @@
 По сути, в нашем случае все изменения, применяемые к `FileLibraryStorage`, будут выполняться внутри одной корутины с последовательным чтением
 и обработкой событий из flow.
 
-Реализуйте следующие методы в LibraryApplication:
+Реализуйте следующие методы в [LibraryApplication](src/main/kotlin/library/LibraryApplication.kt):
 * `allBooks(): List<Book>` - список всех книг, хранящихся в библиотеке;
 * `allowedBooks(): List<Book>` - список всех книг, которые могут взять читатели;
 * `borrowedBooksInfo(): List<BorrowedBook>` - информация о книгах, которые читатели вяли для чтения;
@@ -91,11 +91,4 @@ You didn't return 10 books with expired return date. Please return them as soon 
 Best regards.
 ```
 
-## Отправка на проверку
 Решение можно проверить с помощью тестов, которые запускаются в интерфейсе Intellij Idea или через консоль `./gradlew test` (*Nix) или `.\gradlew test` (Windows).
-Убедитесь, что ваш код корректно отформатирован через `./gradlew ktlintCheck` (*Nix) или `.\gradlew ktlintCheck` (Windows).
-Проблемы с форматированием можно попытаться автоматически исправить с помощью команды `./gradlew ktlintFormat` (*Nix) или `.\gradlew ktlintFormat` (Windows).
-
-Готовое решение добавьте в ветку `solution`.
-Создайте pull request с этой веткой, в качестве заголовка pull request __обязательно__ укажите свое ФИО.
-После создания PR убедитесь, что тесты прошли (загорелась зеленая галочка в CI).
