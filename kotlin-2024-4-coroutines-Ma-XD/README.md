@@ -9,13 +9,17 @@
 При выполнении задания не допускается использования Java Concurrency Utilities, в частности пакета `java.util.concurrent`.
 Так же не стоит использовать библиотеку `kotlinx.atomicfu`.
 
+## Задания
+
+- [Application](tasks/1-application#readme) (`Exception`)
+- [Sequential processor](tasks/2-sequential%20processor#readme) (`Scope`)
+- [Parallel Evaluator](tasks/3-parallel-evaluator#readme) (`Context`)
+- [CompletableFuture](tasks/4-feature#readme) (`CancellableCoroutine`)
+- [Once](tasks/5-once#readme) (`Mutex`)
+- [Image processor](tasks/6-image-processor#readme) (`Channels`)
+- [Competition results](tasks/7-competition-results#readme) (`Flow`)
+
 Все решения должны быть эффективными по времени и памяти.
-
-## Отправка на проверку
 Решение можно проверить с помощью тестов, которые запускаются в интерфейсе Intellij Idea или через консоль `./gradlew test` (*Nix) или `.\gradlew test` (Windows).
-Убедитесь, что ваш код корректно отформатирован через `./gradlew ktlintCheck` (*Nix) или `.\gradlew ktlintCheck` (Windows).
-Проблемы с форматированием можно попытаться автоматически исправить с помощью команды `./gradlew ktlintFormat` (*Nix) или `.\gradlew ktlintFormat` (Windows).
 
-Готовое решение добавьте в ветку `solution`.
-Создайте pull request с этой веткой, в качестве заголовка pull request __обязательно__ укажите свое ФИО.
-После создания PR убедитесь, что тесты прошли (загорелась зеленая галочка в CI).
+
