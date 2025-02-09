@@ -12,9 +12,9 @@
 ## Задания
 
 - [Application](tasks/1-application#readme)
-- [Sequential processor](tasks/2-sequential%20processor#readme) (Техн. `Scope`)
-- [Parallel Evaluator](tasks/3-parallel-evaluator#readme) (Техн. `Context`)
-- [CompletableFuture](tasks/4-feature#readme) (Техн. `CancellableCoroutine`)
+- [Sequential processor](tasks/2-sequential%20processor#readme) (Техн. `Coroutine Context`)
+- [Parallel Evaluator](tasks/3-parallel-evaluator#readme) (Техн. `Coroutine Scope`)
+- [CompletableFuture](tasks/4-feature#readme) (Техн. `Cancellable Coroutine`)
 - [Once](tasks/5-once#readme) (Техн. `Mutex`)
 - [Image processor](tasks/6-image-processor#readme) (Техн. `Channels`)
 - [Competition results](tasks/7-competition-results#readme) (Техн. `Flow`)
