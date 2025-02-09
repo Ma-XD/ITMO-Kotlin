@@ -44,11 +44,11 @@
 Для сериализация воспользуйтесь библиотекой [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization) и [pdvrieze/xmlutil](https://github.com/pdvrieze/xmlutil).
 Для настройки сериализации вам разрешается расставить необходимые аннотации `kotlinx.serialization` в уже существующих классах в пакете `api`.
 
-Сделайте, чтобы каталог книг (`BookCatalog`) и (`LibraryState`) представлялись в текстовом формате. Сериализованное представление должно быть отформатировано.
+Сделайте, чтобы каталог книг ([`BookCatalog`](src/main/kotlin/library/api/BookCatalog.kt)) и ([`LibraryState`](src/main/kotlin/library/api/LibraryState.kt)) представлялись в текстовом формате. Сериализованное представление должно быть отформатировано.
 
-Реализуйте объявленные методы в объекте `LibrarySerializer` так, чтобы
-* Преобразовывать каталог книг (`BookCatalog`) в формат xml и обратно;
-* Преобразовывать информацию о посетителях и выданных книг (`LibraryState`) в формат json и обратно.
+Реализуйте объявленные методы в объекте [`LibrarySerializer`](src/main/kotlin/library/data/LibrarySerializer.kt) так, чтобы
+* Преобразовывать каталог книг ([`BookCatalog`](src/main/kotlin/library/api/BookCatalog.kt)) в формат xml и обратно;
+* Преобразовывать информацию о посетителях и выданных книг ([`LibraryState`](src/main/kotlin/library/api/LibraryState.kt)) в формат json и обратно.
 
 Решение можно протестировать с помощью тестов в классе [`LibrarySerializerTest`](src/test/kotlin/library/LibrarySerializerTest.kt) или через команду `gradlew test --tests "library.LibrarySerializerTest"`.
 
@@ -68,11 +68,11 @@
 
 ## Часть 3. Library Application
 Теперь реализуйте многопоточное приложение для управления библиотекой.
-Состояние приложение должно поддерживаться с использованием уже разработанного `FileLibraryStorage`.
+Состояние приложение должно поддерживаться с использованием уже разработанного [`FileLibraryStorage`](src/main/kotlin/library/data/FileLibraryStorage.kt).
 Все методы нашего приложения должны корректно работать при параллельных обращениях так, чтобы общее состояние приложения изменялось консистентно. 
 
 Чтобы добиться этой цели, познакомьтесь с [моделью акторов](actors.md) и примените ее для решения этого пункта задания.
-По сути, в нашем случае все изменения, применяемые к `FileLibraryStorage`, будут выполняться внутри одной корутины с последовательным чтением
+По сути, в нашем случае все изменения, применяемые к [`FileLibraryStorage`](src/main/kotlin/library/data/FileLibraryStorage.kt), будут выполняться внутри одной корутины с последовательным чтением
 и обработкой событий из flow.
 
 Реализуйте следующие методы в [LibraryApplication](src/main/kotlin/library/LibraryApplication.kt):
