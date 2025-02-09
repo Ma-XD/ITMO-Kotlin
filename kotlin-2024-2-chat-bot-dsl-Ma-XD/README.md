@@ -2,13 +2,13 @@
 
 Вам необходимо реализовать DSL для декларативного описания функциональности чат ботов (в Telegram, VK или других мессенджерах).
 
-Вам дано базовое api для работы с ботом (пакет [`chatbot.api`](https://github.com/Ma-XD/ITMO-Kotlin/tree/main/kotlin-2024-2-chat-bot-dsl-Ma-XD/src/main/kotlin/chatbot/api)):
+Вам дано базовое api для работы с ботом (пакет [`chatbot.api`](src/main/kotlin/chatbot/api)):
 
 * Интерфейс `Client`, скрывающий детали взаимодействия с api мессенджеров
 * Интерфейс `ChatContextsManager`, хранит внутри состояние определенного чата.
   Например, пользователь выбрал какой-то пункт меню и теперь должен нажать какую-то кнопку подменю.
 
-Также дана базовая реализация чат-бота в пакете [`chatbot.bot`](https://github.com/Ma-XD/ITMO-Kotlin/tree/main/kotlin-2024-2-chat-bot-dsl-Ma-XD/src/main/kotlin/chatbot/bot):
+Также дана базовая реализация чат-бота в пакете [`chatbot.bot`](src/main/kotlin/chatbot/bot):
 * `MessageProcessor` - лямбда функция-обработчик сообщения;
 * `MessageHandler` - класс с полями
   * `predicete` - условие, при котором нужно выполнить обработчик,
@@ -16,7 +16,7 @@
 * `Bot` - класс, реализующий интерфейс `ChatBot` и принимающий список `MessageHandler`  
   При обработке сообщения выбирается первый подходящий обработчик, а все последующие должны игнорироваться.
 
-Реализуйте DSL по заданию ниже в пакете [`chatbot.dsl`](https://github.com/Ma-XD/ITMO-Kotlin/tree/main/kotlin-2024-2-chat-bot-dsl-Ma-XD/src/main/kotlin/chatbot/dsl).
+Реализуйте DSL по заданию ниже в пакете [`chatbot.dsl`](src/main/kotlin/chatbot/dsl).
 
 Решение можно проверить с помощью тестов, которые запускаются в интерфейсе Intellij Idea или через консоль `./gradlew test` (*Nix) или `.\gradlew test` (Windows).
 
