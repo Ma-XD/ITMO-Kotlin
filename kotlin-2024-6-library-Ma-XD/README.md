@@ -75,7 +75,7 @@
 По сути, в нашем случае все изменения, применяемые к [`FileLibraryStorage`](src/main/kotlin/library/data/FileLibraryStorage.kt), будут выполняться внутри одной корутины с последовательным чтением
 и обработкой событий из flow.
 
-Реализуйте следующие методы в [LibraryApplication](src/main/kotlin/library/LibraryApplication.kt):
+Реализуйте следующие методы в [`LibraryApplication`](src/main/kotlin/library/LibraryApplication.kt):
 * `allBooks(): List<Book>` - список всех книг, хранящихся в библиотеке;
 * `allowedBooks(): List<Book>` - список всех книг, которые могут взять читатели;
 * `borrowedBooksInfo(): List<BorrowedBook>` - информация о книгах, которые читатели вяли для чтения;
