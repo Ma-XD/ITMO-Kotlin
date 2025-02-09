@@ -11,7 +11,7 @@
 
 ## Задания
 
-- [Application](tasks/1-application#readme) (`Exception`)
+- [Application](tasks/1-application#readme)
 - [Sequential processor](tasks/2-sequential%20processor#readme) (`Scope`)
 - [Parallel Evaluator](tasks/3-parallel-evaluator#readme) (`Context`)
 - [CompletableFuture](tasks/4-feature#readme) (`CancellableCoroutine`)
