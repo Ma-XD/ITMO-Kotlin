@@ -2,13 +2,13 @@
 
 Вам необходимо реализовать DSL для декларативного описания функциональности чат ботов (в Telegram, VK или других мессенджерах).
 
-Вам дано базовое api для работы с ботом (пакет `chatbot.api`):
+Вам дано базовое api для работы с ботом (пакет [`chatbot.api`](https://github.com/Ma-XD/ITMO-Kotlin/tree/main/kotlin-2024-2-chat-bot-dsl-Ma-XD/src/main/kotlin/chatbot/api)):
 
 * Интерфейс `Client`, скрывающий детали взаимодействия с api мессенджеров
 * Интерфейс `ChatContextsManager`, хранит внутри состояние определенного чата.
   Например, пользователь выбрал какой-то пункт меню и теперь должен нажать какую-то кнопку подменю.
 
-Также дана базовая реализация чат-бота в пакете `chatbot.bot`:
+Также дана базовая реализация чат-бота в пакете [`chatbot.bot`](https://github.com/Ma-XD/ITMO-Kotlin/tree/main/kotlin-2024-2-chat-bot-dsl-Ma-XD/src/main/kotlin/chatbot/bot):
 * `MessageProcessor` - лямбда функция-обработчик сообщения;
 * `MessageHandler` - класс с полями
   * `predicete` - условие, при котором нужно выполнить обработчик,
@@ -16,14 +16,9 @@
 * `Bot` - класс, реализующий интерфейс `ChatBot` и принимающий список `MessageHandler`  
   При обработке сообщения выбирается первый подходящий обработчик, а все последующие должны игнорироваться.
 
-Реализуйте DSL по заданию ниже в пакете `chatbot.dsl`.
+Реализуйте DSL по заданию ниже в пакете [`chatbot.dsl`](https://github.com/Ma-XD/ITMO-Kotlin/tree/main/kotlin-2024-2-chat-bot-dsl-Ma-XD/src/main/kotlin/chatbot/dsl).
 
 Решение можно проверить с помощью тестов, которые запускаются в интерфейсе Intellij Idea или через консоль `./gradlew test` (*Nix) или `.\gradlew test` (Windows).
-
-Готовое решение добавьте в ветку `solution`.
-Убедитесь, что ваш код корректно отформатирован через `./gradlew ktlintCheck` (*Nix) или `.\gradlew ktlintCheck` (Windows).
-Создайте pull request с этой веткой, в качестве заголовка pull request обязательно укажите свое ФИО.
-После создания PR убедитесь, что тесты прошли.
 
 ## Базовая настройка
 
@@ -198,57 +193,6 @@ val bot = chatBot(testClient) {
                 //   ),
                 // )
             }
-        }
-    }
-}
-```
-
-## (Бонус) Предикатные контексты для обработчиков
-
-Определим `MessageProcessorPredicate` следующим образом
-```kotlin
-typealias MessagePredicate = (message: Message) -> Boolean
-```
-
-* Реализуйте возможность определять обработчики для сообщений, удовлетворяющих предикатам, при помощи
-  конструкции `MessageProcessorPredicate.into`.
-
-```kotlin
-
-val IS_ADMIN: MessagePredicate = { it.chatId.id == 316671439L }
-chatBot(client) {
-    behaviour {
-        IS_ADMIN.into {
-            onCommand("ban_user") {
-                // ...
-            }
-
-            // and other admin commands
-        }
-
-        onCommand("help") {
-            // ...
-        }
-
-        // and other user commands
-    }
-}
-```
-
-Обратите внимание, что в отличие от контекстов `into` конструкции могут вкладываться друг в друга, то есть
-внутри `MessageProcessorPredicate.into` может быть еще одна такая же конструкция.
-В таком случае обработчики должны срабатывать, когда все необходимые предикаты выполняются.
-
-* Переопределите операцию умножения для двух `MessagePredicate`: в таком случае обработчики должны выполняться, когда оба предиката выполняются
-
-```kotlin
-val IS_ADMIN: MessagePredicate = { it.chatId.id == 316671439L }
-val IS_EVEN_MESSAGE_ID: MessagePredicate = { it.id % 2 == 0L }
-
-chatBot(client) {
-    behaviour {
-        (IS_ADMIN * IS_EVEN_MESSAGE_ID).into {
-            // ... 
         }
     }
 }
